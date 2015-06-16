@@ -1,0 +1,32 @@
+$width: 400px;
+$tile-count: 4;
+$tile-padding: 15px;
+$tile-size: ($width - $tile-padding * ($tile-count + 1)) / $tile-count;
+
+#game {
+    position: relative;
+    width: $width;
+    height: $width;
+
+    .grid-container {
+    position: absolute;
+    z-index: 1;
+    margin: 0 auto;
+
+    .grid-cell {
+    width: $tile-size;
+    height: $tile-size;
+    margin-bottom: $tile-padding;
+    margin-bottom: $tile-padding;
+    }
+}
+    .tile-container {
+        position : absolute;
+        z-index: 2;
+
+    .tile {
+    width: $tile-size;
+    height: $tile-size;
+        }
+    }
+}
