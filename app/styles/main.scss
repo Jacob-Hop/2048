@@ -27,6 +27,19 @@ $tile-size: ($width - $tile-padding * ($tile-count + 1)) / $tile-count;
     .tile {
     width: $tile-size;
     height: $tile-size;
+        @for $x from 1 through $tile-count {
+            @for $y from 1 through $tile-count {
+                $zeroOffsetX: $x - 1;
+                $zeroOffsetY: $y - 1;
+                $newX: ($tile-size) * ($zeroOFFsetX) + ($tile-padding * $zeroOffsetX);
+                $newY: ($tile-size) * ($zeroOffsetY) + ($tile-padding * $zeroOffsetY);
+
+                &.position-#{$zeroOffsetX}-#{$zeroOffsetY} {
+                -webkit-transform: translate($newX, $newY);
+                transform: translate($new)
+            }
+                 }
+            }
         }
     }
 }
