@@ -6,7 +6,14 @@
              ng-repeat="cell in ngModel.grid track by $index">
         </div>
     </div>
-    <div class="tile-container">
+    <div ng-if='ngModel' class="tile position-{{ ngModel.x }}
+-{{ ngModel.value}}">
+        <div class="tile-inner">
+            {{ ngModel.value }}
+        </div>
+</div>
+
+<div class="tile-container">
         <div tile
              ng-model="tile"
              ng-repeat='tile in ngModel.tiles track by $index'>

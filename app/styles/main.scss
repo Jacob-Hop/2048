@@ -3,6 +3,40 @@ $tile-count: 4;
 $tile-padding: 15px;
 $tile-size: ($width - $tile-padding * ($tile-count + 1)) / $tile-count;
 
+$colors: #EEE4DA,
+         #EAE0C8,
+         #F59563,
+         #3399ff,
+         #ffa333,
+         #cef030,
+         #E8D8CE,
+         #DCAD60,
+         #B60022;
+
+@for $i from 1 through length($colors) {
+    &.tile-#{power(2, $i)} .tile-inner {
+        background: nth($colors, $i)
+    }
+}
+
+@function power ($x, $n) {
+    $ret: 1;
+
+    @if $n >= 0 {
+        @for $i from 1 through $n {
+        $ret: $ret * $x;
+
+    }
+    } @else {
+        @for $i  from $n to 0 {
+            $ret: $ret / $x;
+        }
+
+    }
+
+    @return $ret;
+}
+
 #game {
     position: relative;
     width: $width;
@@ -17,7 +51,7 @@ $tile-size: ($width - $tile-padding * ($tile-count + 1)) / $tile-count;
     width: $tile-size;
     height: $tile-size;
     margin-bottom: $tile-padding;
-    margin-bottom: $tile-padding;
+    margin-right: $tile-padding;
     }
 }
     .tile-container {
@@ -31,12 +65,12 @@ $tile-size: ($width - $tile-padding * ($tile-count + 1)) / $tile-count;
             @for $y from 1 through $tile-count {
                 $zeroOffsetX: $x - 1;
                 $zeroOffsetY: $y - 1;
-                $newX: ($tile-size) * ($zeroOFFsetX) + ($tile-padding * $zeroOffsetX);
+                $newX: ($tile-size) * ($zeroOffsetX) + ($tile-padding * $zeroOffsetX);
                 $newY: ($tile-size) * ($zeroOffsetY) + ($tile-padding * $zeroOffsetY);
 
                 &.position-#{$zeroOffsetX}-#{$zeroOffsetY} {
                 -webkit-transform: translate($newX, $newY);
-                transform: translate($new)
+                transform: translate($newX, $newY);
             }
                  }
             }
